@@ -1,28 +1,83 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="nav-box">
+      <div class='logo' @click="handleClick">渡一教育</div>  
+      <div class="nav-list">
+        <router-link to="/home">首页</router-link>
+        <router-link to="/learn">学习课程</router-link>
+        <router-link to="/student">学员展示</router-link>
+        <router-link to="/about">关于</router-link>
+        <router-link to="/activity">社区</router-link>
+      </div>
+    </div>
+
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
+    
+  },
+  methods:{
+      handleClick(){
+        this.$router.push('/')
+      }
+  },
+  mounted(){
+    console.log(this.$route.params)
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style scoped>
+  .nav-box{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    line-height: 60px;
+    background-color:#3385ff;
+  }
+
+  .nav-box .logo{
+    color:#fff
+  }
+
+.nav-list a{
+  margin-left: 40px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.container{
   margin-top: 60px;
 }
+
+.nav-box,.container{
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.nav-list a.router-link-active {
+  font-weight: bold;
+}
+
+.container {
+  margin-top: 60px;
+}
+.nav-box,
+.container {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
 </style>
+
+
